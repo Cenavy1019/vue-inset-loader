@@ -80,3 +80,6 @@ Vue.component('BaseConfirm', BaseConfirm)
     根元素的标签类型，缺省值为div，支持正则，比如匹配任意标签 ".*"
 
  ✔ `label` 和 `rootEle` 支持在单独页面的style里配置，优先级高于全局配置
+
+ ### 指示器
+ https://ask.dcloud.net.cn/article/id-39345__page-4#reply
