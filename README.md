@@ -4,10 +4,12 @@
 
 ### 第一步 安装
 
-    npm install vue-inset-loader --save-dev
+    `npm install vue-inset-loader --save-dev`
 
 ### 第二步 vue.config.js注入loader
 
+    - 旧版本：
+   ```
     module: {
         rules: [
           {
@@ -23,7 +25,21 @@
             }
           }
         ]
-    },
+    }
+  ```
+
+    - 新版本，适用于chainWebpack
+    ```
+    chainWebpack: config => {
+        config.module
+          .rule('vue-inset-loader')
+          .test(/\.vue$/)
+          .use('vue-inset-loader')
+          .loader('vue-inset-loader')
+          .end()
+    }
+      ```
+    
 
 ### 第三步 pages.json配置文件中添加insetLoader
 
@@ -34,7 +50,7 @@
         },
         // 全局配置
         "label":["confirm"],
-        "rootEle":"div"
+        "rootEle":"view"
     },
     "pages": [
         {
@@ -43,10 +59,16 @@
                 "navigationBarTitleText": "测试页面",
                 // 单独配置，用法跟全局配置一致，优先级高于全局
                 "label": ["confirm","abc"],
-                "rootEle":"div"
+                "rootEle":"view"
             }
         },
     ]
+
+### 第四步  main.js里注册全局组件
+```
+import BaseConfirm from './components/BaseConfirm.vue'
+Vue.component('BaseConfirm', BaseConfirm)
+```
 
 ###  配置说明
 
